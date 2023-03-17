@@ -3,6 +3,7 @@ package Research;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.event.KeyListener;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,14 +11,14 @@ import javax.swing.JLabel;
 
 class Frame extends JFrame {
     
-    private JLabel container = new JLabel();
-    private JLabel pesawat;
+    JLabel container = new JLabel();
+    JLabel pesawat;
     
     private URL path;
     private Image image;
     private ImageIcon icon;
 
-    public Frame() throws HeadlessException {
+    public Frame(Event event) throws HeadlessException {
         this.setUndecorated(true);
         this.setSize(400, 500);
         this.setResizable(false);
@@ -28,6 +29,8 @@ class Frame extends JFrame {
         this.getContentPane().setBackground(Color.BLACK);
         load();
         this.setVisible(true);
+        event.SetFrame(this);
+        this.addKeyListener(event);
     }
     
     public void load() {
@@ -45,7 +48,7 @@ class Frame extends JFrame {
 public class Main {
     
     public static void main(String[] args) {
-        Frame f = new Frame();
+        Frame f = new Frame(new Event());
     }
     
 }
