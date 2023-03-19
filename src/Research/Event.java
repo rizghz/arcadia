@@ -36,10 +36,29 @@ public class Event implements KeyListener, ActionListener {
                 (frame.player.getX()) + (frame.player.getWidth()  / 2) - (bullet.getWidth() / 2), 
                 (frame.player.getY()) + (frame.player.getHeight() / 2) - (bullet.getHeight())
             );
+            bullet.SetMode(1);
             frame.add(bullet);
             frame.bullet.add(new Thread(bullet));
             frame.bullet.getLast().start();
             frame.add(frame.background);
+        }
+        if (key == 49) {
+            Bullet bullet = new Bullet();
+            bullet.setLocation (
+                (frame.player.getX()) + (frame.player.getWidth()  / 2) - (bullet.getWidth() / 2), 
+                (frame.player.getY()) + (frame.player.getHeight() / 2) - (bullet.getHeight())
+            );
+            bullet.SetMode(2);
+            frame.add(bullet);
+            frame.bullet.add(new Thread(bullet));
+            frame.bullet.getLast().start();
+            frame.add(frame.background);
+        }
+        if (key == 50) {
+            
+        }
+        if (key == 51) {
+            
         }
     }
 
@@ -53,8 +72,10 @@ public class Event implements KeyListener, ActionListener {
         if (e.getSource() == timer) {
             if (!frame.bullet.isEmpty()) {
                 if (frame.bullet.getLast().isAlive()) {
+                    System.out.println("alive");
                     timer.setDelay(10);
                 } else {
+                    System.out.println("dead");
                     timer.setDelay(1);
                 }
             }

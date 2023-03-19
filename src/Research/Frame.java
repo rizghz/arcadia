@@ -55,7 +55,7 @@ public class Frame extends JFrame {
                 (w / 2) - (enemy.getWidth() / 2), 
                 (30)
         );
-        this.add(enemy);
+//        this.add(enemy);
         
     }
     
