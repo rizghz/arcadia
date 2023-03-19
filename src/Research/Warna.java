@@ -1,5 +1,5 @@
 package Research;
 
-public class Color {
+public class Warna {
     
 }
