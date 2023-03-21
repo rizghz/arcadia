@@ -1,5 +1,5 @@
-package Research;
 
+import UI.Screen;
 import javax.swing.SwingUtilities;
 
 public class Main {
@@ -8,10 +8,11 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Frame frame = new Frame(500, 800);
-                frame.LoadAssets();
-                frame.SetEventHandler(new Event());
-                frame.Settings();
+                Screen screen = new Screen(500, 800);
+                screen.Settings();
+                screen.AddVignette();
+                screen.AddMenu();
+                screen.AddBackground();
             }
         });
     }
