@@ -17,7 +17,7 @@ public class Screen extends JFrame {
     private JLabel background;
     private JLabel vignette;
     
-    private Menu menu;
+    public static Menu menu;
 
     public Screen(int width, int height) throws HeadlessException {
         this.setTitle(title);
@@ -53,7 +53,7 @@ public class Screen extends JFrame {
         menu.Settings();
         menu.AddTitle();
         menu.AddButton();
-        menu.SetMouseHandler(this, new MouseHandler());
+        menu.SetMouseHandler(new MouseHandler());
         this.add(menu);
     }
     

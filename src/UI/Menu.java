@@ -3,6 +3,8 @@ package UI;
 import Event.MouseHandler;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -66,11 +68,59 @@ public class Menu extends JPanel {
         btn.setContentAreaFilled(false);
     }
     
-    public void SetMouseHandler(Screen screen, MouseHandler hdlMouse) {
+    public void Hide() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Color a = btnPlay.getForeground();
+                Color b = btnManual.getForeground();
+                Color c = btnExit.getForeground();
+                if (lblTitle.getY() > -400) {
+                    lblTitle.setLocation (
+                            lblTitle.getX(), 
+                            lblTitle.getY() - 1
+                    );
+                } else {
+                    lblTitle.setVisible(false);
+                }
+                if ((a.getAlpha() | b.getAlpha() | c.getAlpha()) != 0) {
+                    if (a.getAlpha() != 0) {
+                        btnPlay.setForeground(new Color (
+                                a.getRed(), 
+                                a.getBlue(), 
+                                a.getGreen(), 
+                                a.getAlpha() - 1)
+                        );
+                    }
+                    if (b.getAlpha() != 0) {
+                        btnManual.setForeground(new Color (
+                                b.getRed(), 
+                                b.getBlue(), 
+                                b.getGreen(), 
+                                b.getAlpha() - 1)
+                        );
+                    }
+                    if (c.getAlpha() != 0) {
+                        btnExit.setForeground(new Color (
+                                c.getRed(), 
+                                c.getBlue(), 
+                                c.getGreen(), 
+                                c.getAlpha() - 1)
+                        );
+                    }
+                } else {
+                    btnPlay.setVisible(false);
+                    btnManual.setVisible(false);
+                    btnExit.setVisible(false);
+                }
+            }
+        }, 3, 3);
+    }
+    
+    public void SetMouseHandler(MouseHandler hdlMouse) {
         btnPlay.addMouseListener(hdlMouse);
         btnManual.addMouseListener(hdlMouse);
         btnExit.addMouseListener(hdlMouse);
-        hdlMouse.SetComponent(screen, this);
     }
     
 }
