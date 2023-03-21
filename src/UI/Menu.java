@@ -11,7 +11,7 @@ public class Menu extends JPanel {
     private final int w;
     private final int h;
 
-    private AssetsLoader loader = new AssetsLoader();
+    private final AssetsLoader loader = new AssetsLoader();
     
     private JLabel lblTitle;
     private JButton btnPlay;
@@ -26,6 +26,9 @@ public class Menu extends JPanel {
     
     public void Settings() {
         this.setBackground(new Color(0, 0, 0, 0));
+        this.setOpaque(false);
+        this.setLayout(null);
+        this.setVisible(true);
     }
     
     public void AddTitle() {
@@ -38,21 +41,22 @@ public class Menu extends JPanel {
         /// Tombol Play
         btnPlay = new JButton("P L A Y");
         btnPlay.setBounds(0, 370, 500, 50);
-        ButtonStyle(btnPlay);
+        btnPlay.setFont(new Font("Arial", Font.BOLD, 20));
+        SetButtonStyle(btnPlay);
         this.add(btnPlay);
         /// Tombol Manual
         btnManual = new JButton("M A N U A L");
         btnManual.setBounds(0, 420, 500, 50);
-        ButtonStyle(btnManual);
+        SetButtonStyle(btnManual);
         this.add(btnManual);
         /// Tombol Exit
         btnExit = new JButton("E X I T");
         btnExit.setBounds(0, 470, 500, 50);
-        ButtonStyle(btnExit);
+        SetButtonStyle(btnExit);
         this.add(btnExit);
     }
     
-    public void ButtonStyle(JButton btn) {
+    public void SetButtonStyle(JButton btn) {
         btn.setFont(new Font("Arial", Font.BOLD, 20));
         btn.setBackground(new Color(0, 0, 0, 0));
         btn.setForeground(Color.decode("#454138"));
