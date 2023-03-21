@@ -43,17 +43,17 @@ public class Menu extends JPanel {
     public void AddButton() {
         /// Tombol Play
         btnPlay = new JButton("P L A Y");
-        btnPlay.setBounds(0, 380, 500, 50);
+        btnPlay.setBounds(this.w/2 - 150/2, 380, 150, 50);
         SetButtonStyle(btnPlay);
         this.add(btnPlay);
         /// Tombol Manual
         btnManual = new JButton("M A N U A L");
-        btnManual.setBounds(0, 430, 500, 50);
+        btnManual.setBounds(this.w/2 - 200/2, 430, 200, 50);
         SetButtonStyle(btnManual);
         this.add(btnManual);
         /// Tombol Exit
         btnExit = new JButton("E X I T");
-        btnExit.setBounds(0, 480, 500, 50);
+        btnExit.setBounds(this.w/2 - 150/2, 480, 150, 50);
         SetButtonStyle(btnExit);
         this.add(btnExit);
     }
@@ -66,6 +66,11 @@ public class Menu extends JPanel {
         btn.setBorder(null);
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
+    }
+    
+    public void FillButton(JButton btn, String text, String color) {
+        btn.setText(text);
+        btn.setForeground(Color.decode(color));
     }
     
     public void Hide() {
@@ -114,7 +119,7 @@ public class Menu extends JPanel {
                     btnExit.setVisible(false);
                 }
             }
-        }, 3, 3);
+        }, 2, 2);
     }
     
     public void SetMouseHandler(MouseHandler hdlMouse) {

@@ -1,9 +1,9 @@
 package Event;
 
 import Core.Main;
+import System.Game;
 import UI.Menu;
 import UI.Screen;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -17,6 +17,12 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == menu.btnPlay) {
             menu.Hide();
+//            Game game = new Game(screen);
+//            game.setBounds(0, 0, screen.getWidth(), screen.getHeight());
+//            game.Settings();
+//            game.add(menu.btnPlay);
+//            screen.add(game);
+//            game.Play();
         }
         if (e.getSource() == menu.btnManual) {
             
@@ -31,37 +37,87 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource() == menu.btnPlay) {
-            menu.btnPlay.setText("•   P L A Y   •");
-            menu.btnPlay.setForeground(Color.decode("#767165"));
+            menu.FillButton (
+                    menu.btnPlay, 
+                    "•   P L A Y   •", 
+                    "#767165"
+            );
         }
         if (e.getSource() == menu.btnManual) {
-            menu.btnManual.setText("•   M A N U A L   •");
-            menu.btnManual.setForeground(Color.decode("#767165"));
+            menu.FillButton (
+                    menu.btnManual, 
+                    "•   M A N U A L   •", 
+                    "#767165");
         }
         if (e.getSource() == menu.btnExit) {
-            menu.btnExit.setText("•   E X I T   •");
-            menu.btnExit.setForeground(Color.decode("#767165"));
+            menu.FillButton (
+                    menu.btnExit, 
+                    "•   E X I T   •", 
+                    "#767165"
+            );
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        menu.btnPlay.setText("P L A Y");
-        menu.btnPlay.setForeground(Color.decode("#454138"));
-        menu.btnManual.setText("M A N U A L");
-        menu.btnManual.setForeground(Color.decode("#454138"));
-        menu.btnExit.setText("E X I T");
-        menu.btnExit.setForeground(Color.decode("#454138"));
+        menu.FillButton (
+                menu.btnPlay, 
+                "P L A Y", 
+                "#454138"
+        );
+        menu.FillButton (
+                menu.btnManual, 
+                "M A N U A L", 
+                "#454138");
+        menu.FillButton (
+                menu.btnExit, 
+                "E X I T", 
+                "#454138"
+        );
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+        if (e.getSource() == menu.btnPlay) {
+            menu.FillButton (
+                    menu.btnPlay, 
+                    "P L A Y", 
+                    "#767165"
+            );
+        }
+        if (e.getSource() == menu.btnManual) {
+            menu.FillButton (
+                    menu.btnManual, 
+                    "M A N U A L", 
+                    "#767165"
+            );
+        }
+        if (e.getSource() == menu.btnExit) {
+            menu.FillButton (
+                    menu.btnExit, 
+                    "E X I T", 
+                    "#767165"
+            );
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+        menu.FillButton (
+                menu.btnPlay, 
+                "P L A Y", 
+                "#454138"
+        );
+        menu.FillButton (
+                menu.btnManual, 
+                "M A N U A L", 
+                "#454138"
+        );
+        menu.FillButton (
+                menu.btnExit, 
+                "E X I T", 
+                "#454138"
+        );
     }
     
 }
