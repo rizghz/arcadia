@@ -4,9 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import javax.swing.Timer;
 
-public class Event implements KeyListener, ActionListener {
+public class Event implements KeyListener, ActionListener, MouseListener {
 
     private Timer timer;
     private Frame frame;
@@ -31,28 +34,12 @@ public class Event implements KeyListener, ActionListener {
     public void keyPressed(KeyEvent e) {
         key = e.getKeyCode();
         if (key == 32) {
-            Bullet bullet = new Bullet();
-            bullet.setLocation (
-                (frame.player.getX()) + (frame.player.getWidth()  / 2) - (bullet.getWidth() / 2), 
-                (frame.player.getY()) + (frame.player.getHeight() / 2) - (bullet.getHeight())
-            );
-            bullet.SetMode(1);
-            frame.add(bullet);
-            frame.bullet.add(new Thread(bullet));
-            frame.bullet.getLast().start();
-            frame.add(frame.background);
+            Skill s = new Skill(frame.player, frame);
+            s.Basic(frame);
         }
         if (key == 49) {
-            Bullet bullet = new Bullet();
-            bullet.setLocation (
-                (frame.player.getX()) + (frame.player.getWidth()  / 2) - (bullet.getWidth() / 2), 
-                (frame.player.getY()) + (frame.player.getHeight() / 2) - (bullet.getHeight())
-            );
-            bullet.SetMode(2);
-            frame.add(bullet);
-            frame.bullet.add(new Thread(bullet));
-            frame.bullet.getLast().start();
-            frame.add(frame.background);
+            Skill s = new Skill(frame.player, frame);
+            s.Special(frame);
         }
         if (key == 50) {
             
@@ -72,10 +59,8 @@ public class Event implements KeyListener, ActionListener {
         if (e.getSource() == timer) {
             if (!frame.bullet.isEmpty()) {
                 if (frame.bullet.getLast().isAlive()) {
-                    System.out.println("alive");
                     timer.setDelay(10);
                 } else {
-                    System.out.println("dead");
                     timer.setDelay(1);
                 }
             }
@@ -108,6 +93,40 @@ public class Event implements KeyListener, ActionListener {
                 }
             }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == frame.playButton) {
+            System.out.println("play");
+        }
+        if (e.getSource() == frame.manualButton) {
+            System.out.println("manual");
+        }
+        if (e.getSource() == frame.exitButton) {
+            System.out.println("exit");
+            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
     }
     
 }

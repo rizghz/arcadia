@@ -5,15 +5,15 @@
             <url>src/Research/Event.java</url>
             <bookmark id="1">
                 <name/>
-                <line>81</line>
+                <line>68</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Repository/Arcadia/src/Research/Color.java</file>
-            <file>file:/C:/Repository/Arcadia/src/Research/Main.java</file>
+            <file>file:/C:/Repository/Arcadia/src/Research/Frame.java</file>
+            <file>file:/C:/Repository/Arcadia/src/Research/Menu.java</file>
             <file>file:/C:/Repository/Arcadia/src/Research/Event.java</file>
         </group>
     </open-files>
