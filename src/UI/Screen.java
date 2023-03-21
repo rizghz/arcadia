@@ -1,5 +1,6 @@
 package UI;
 
+import Event.MouseHandler;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,6 +53,7 @@ public class Screen extends JFrame {
         menu.Settings();
         menu.AddTitle();
         menu.AddButton();
+        menu.SetMouseHandler(this, new MouseHandler());
         this.add(menu);
     }
     

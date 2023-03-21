@@ -1,5 +1,6 @@
 package UI;
 
+import Event.MouseHandler;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -14,9 +15,9 @@ public class Menu extends JPanel {
     private final AssetsLoader loader = new AssetsLoader();
     
     private JLabel lblTitle;
-    private JButton btnPlay;
-    private JButton btnManual;
-    private JButton btnExit;
+    public JButton btnPlay;
+    public JButton btnManual;
+    public JButton btnExit;
     
     public Menu(int width, int height) {
         this.setSize(width, height);
@@ -40,18 +41,17 @@ public class Menu extends JPanel {
     public void AddButton() {
         /// Tombol Play
         btnPlay = new JButton("P L A Y");
-        btnPlay.setBounds(0, 370, 500, 50);
-        btnPlay.setFont(new Font("Arial", Font.BOLD, 20));
+        btnPlay.setBounds(0, 380, 500, 50);
         SetButtonStyle(btnPlay);
         this.add(btnPlay);
         /// Tombol Manual
         btnManual = new JButton("M A N U A L");
-        btnManual.setBounds(0, 420, 500, 50);
+        btnManual.setBounds(0, 430, 500, 50);
         SetButtonStyle(btnManual);
         this.add(btnManual);
         /// Tombol Exit
         btnExit = new JButton("E X I T");
-        btnExit.setBounds(0, 470, 500, 50);
+        btnExit.setBounds(0, 480, 500, 50);
         SetButtonStyle(btnExit);
         this.add(btnExit);
     }
@@ -64,6 +64,13 @@ public class Menu extends JPanel {
         btn.setBorder(null);
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
+    }
+    
+    public void SetMouseHandler(Screen screen, MouseHandler hdlMouse) {
+        btnPlay.addMouseListener(hdlMouse);
+        btnManual.addMouseListener(hdlMouse);
+        btnExit.addMouseListener(hdlMouse);
+        hdlMouse.SetComponent(screen, this);
     }
     
 }

@@ -56,7 +56,7 @@ public class Frame extends JFrame {
         this.add(title);
         
         playButton = new JButton("P L A Y");
-        playButton.setBounds(0, 370, 500, 50);
+        playButton.setBounds(0, 380, 500, 50);
         playButton.setFont(new Font("Arial", Font.BOLD, 20));
         playButton.setBackground(new Color(0, 0, 0, 0));
         playButton.setForeground(Color.decode("#454138"));
@@ -67,7 +67,7 @@ public class Frame extends JFrame {
         this.add(playButton);
         
         manualButton = new JButton("M A N U A L");
-        manualButton.setBounds(0, 420, 500, 50);
+        manualButton.setBounds(0, 430, 500, 50);
         manualButton.setFont(new Font("Arial", Font.BOLD, 20));
         manualButton.setBackground(new Color(0, 0, 0, 0));
         manualButton.setForeground(Color.decode("#454138"));
@@ -78,7 +78,7 @@ public class Frame extends JFrame {
         this.add(manualButton);
         
         exitButton = new JButton("E X I T");
-        exitButton.setBounds(0, 470, 500, 50);
+        exitButton.setBounds(0, 480, 500, 50);
         exitButton.setFont(new Font("Arial", Font.BOLD, 20));
         exitButton.setBackground(new Color(0, 0, 0, 0));
         exitButton.setForeground(Color.decode("#454138"));
