@@ -1,5 +1,6 @@
 package UI;
 
+import Core.Main;
 import Event.MouseHandler;
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +29,6 @@ public class Menu extends JPanel {
     }
     
     public void Settings() {
-        this.setBackground(new Color(0, 0, 0, 0));
         this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
@@ -117,6 +117,7 @@ public class Menu extends JPanel {
                     btnPlay.setVisible(false);
                     btnManual.setVisible(false);
                     btnExit.setVisible(false);
+                    Main.screen.remove(Screen.menu);
                 }
             }
         }, 2, 2);

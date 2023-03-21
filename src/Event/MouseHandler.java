@@ -2,6 +2,7 @@ package Event;
 
 import Core.Main;
 import System.Game;
+import System.Entity;
 import UI.Menu;
 import UI.Screen;
 import java.awt.event.MouseEvent;
@@ -17,12 +18,12 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == menu.btnPlay) {
             menu.Hide();
-//            Game game = new Game(screen);
-//            game.setBounds(0, 0, screen.getWidth(), screen.getHeight());
-//            game.Settings();
-//            game.add(menu.btnPlay);
-//            screen.add(game);
-//            game.Play();
+            Game game = new Game(screen);
+            game.setBounds(0, 0, screen.getWidth(), screen.getHeight());
+            game.Settings();
+            game.Play();
+            screen.add(game);
+            screen.add(screen.background);
         }
         if (e.getSource() == menu.btnManual) {
             

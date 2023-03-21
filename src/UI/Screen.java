@@ -14,8 +14,8 @@ public class Screen extends JFrame {
     
     private final AssetsLoader loader = new AssetsLoader();
     
-    private JLabel background;
-    private JLabel vignette;
+    public JLabel background;
+    public JLabel vignette;
     
     public static Menu menu;
 

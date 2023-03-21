@@ -1,5 +1,6 @@
 package System;
 
+import Core.Main;
 import Event.KeyHandler;
 import UI.Screen;
 import java.awt.Color;
@@ -12,7 +13,7 @@ public class Game extends JPanel {
     
     private Dimension area;
     
-    private Entity player;
+    public Entity player;
     private Entity enemy;
 
     public Game(Screen screen) {
@@ -21,8 +22,6 @@ public class Game extends JPanel {
     }
     
     public void Settings() {
-//        this.setBackground(new Color(0, 0, 0, 0));
-        this.setBackground(Color.RED);
         this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
@@ -30,19 +29,19 @@ public class Game extends JPanel {
     
     public void AddPlayer() {
         player = new Entity();
-        player.setBounds(area.width/2 - player.getWidth()/2, -30, 30, 30);
+        player.setBounds(area.width/2 - player.getWidth()/2, 830, 30, 30);
         this.add(player);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                if (player.getY() > 400) {
+                if (player.getY() > 600) {
                     player.setLocation (
                             player.getX(), 
                             player.getY() - 1
                     );
                 }
             }
-        }, 2, 2);
+        }, 5, 5);
     }
     
     public void Play() {
