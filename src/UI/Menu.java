@@ -1,8 +1,8 @@
 package UI;
 
-import Core.Main;
 import Event.MouseHandler;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,6 +24,7 @@ public class Menu extends JPanel {
     
     public Menu(int width, int height) {
         this.setSize(width, height);
+        this.setPreferredSize(new Dimension(width, height));
         this.w = this.getWidth();
         this.h = this.getHeight();
     }
@@ -32,6 +33,7 @@ public class Menu extends JPanel {
         this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
+        this.SetMouseHandler(new MouseHandler());
     }
     
     public void AddTitle() {
@@ -74,6 +76,8 @@ public class Menu extends JPanel {
     }
     
     public void Hide() {
+        this.requestFocus(false);
+        this.setFocusable(false);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -117,7 +121,6 @@ public class Menu extends JPanel {
                     btnPlay.setVisible(false);
                     btnManual.setVisible(false);
                     btnExit.setVisible(false);
-                    Main.screen.remove(Screen.menu);
                 }
             }
         }, 2, 2);

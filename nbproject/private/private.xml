@@ -12,9 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Repository/Arcadia/src/Event/ControlHandler.java</file>
             <file>file:/C:/Repository/Arcadia/src/UI/Screen.java</file>
+            <file>file:/C:/Repository/Arcadia/src/Core/Main.java</file>
+            <file>file:/C:/Repository/Arcadia/src/Event/MouseHandler.java</file>
             <file>file:/C:/Repository/Arcadia/src/Research/Frame.java</file>
-            <file>file:/C:/Repository/Arcadia/src/UI/Menu.java</file>
+            <file>file:/C:/Repository/Arcadia/src/Research/Event.java</file>
         </group>
     </open-files>
 </project-private>

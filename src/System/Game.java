@@ -1,9 +1,7 @@
 package System;
 
-import Core.Main;
 import Event.KeyHandler;
 import UI.Screen;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,20 +9,24 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel {
     
-    private Dimension area;
+    private final Dimension area;
     
     public Entity player;
-    private Entity enemy;
+    public Entity enemy;
 
     public Game(Screen screen) {
         this.setSize(screen.getSize());
+        this.setBounds(0, 0, screen.getWidth(), screen.getHeight());
         this.area = screen.getSize();
     }
     
     public void Settings() {
         this.setOpaque(false);
         this.setLayout(null);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
         this.setVisible(true);
+        this.addKeyListener(new KeyHandler());
     }
     
     public void AddPlayer() {
@@ -41,15 +43,11 @@ public class Game extends JPanel {
                     );
                 }
             }
-        }, 5, 5);
+        }, 6, 6);
     }
     
     public void Play() {
         this.AddPlayer();
     }
-    
-    public void SetKeyHandler(KeyHandler hdlKey) {
-        this.addKeyListener(hdlKey);
-    }
-    
+
 }

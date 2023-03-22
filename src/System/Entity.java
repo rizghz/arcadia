@@ -14,4 +14,11 @@ public class Entity extends JLabel {
         this.setSize(30, 30);
     }
     
+    public boolean InEdge() {
+        this.x = getX();
+        this.y = getY();
+        return (0 <= x && x <= 500 - getWidth()) && 
+               (0 <= y && y <= 800 - getHeight());
+    }
+    
 }

@@ -12,10 +12,10 @@ public class Main {
             @Override
             public void run() {
                 screen = new Screen(500, 800);
-                screen.Settings();
                 screen.AddVignette();
                 screen.AddMenu();
                 screen.AddBackground();
+                screen.Settings();
             }
         });
     }
