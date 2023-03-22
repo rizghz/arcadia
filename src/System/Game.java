@@ -36,11 +36,14 @@ public class Game extends JPanel {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                if (player.getY() > 600) {
+                if (player.getY() >= 600) {
                     player.setLocation (
                             player.getX(), 
                             player.getY() - 1
                     );
+                }
+                if (player.getY() == 600) {
+                    this.cancel();
                 }
             }
         }, 6, 6);
