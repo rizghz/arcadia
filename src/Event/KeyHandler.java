@@ -10,8 +10,10 @@ import javax.swing.Timer;
 
 public class KeyHandler implements KeyListener, ActionListener {
 
-    private Timer timer;
-    private int key;
+    private final Timer timer;
+    
+    private int buffer;
+    private int direction;
     
     private final Game game = Screen.game;
 
@@ -27,7 +29,25 @@ public class KeyHandler implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        key = e.getKeyCode();
+        buffer = e.getKeyCode();
+        if (buffer == KeyEvent.VK_LEFT || buffer == KeyEvent.VK_A) {
+            direction = buffer;
+        }
+        if (buffer == KeyEvent.VK_RIGHT || buffer == KeyEvent.VK_D) {
+            direction = buffer;
+        }
+        if (buffer == KeyEvent.VK_UP || buffer == KeyEvent.VK_W) {
+            direction = buffer;
+        }
+        if (buffer == KeyEvent.VK_DOWN || buffer == KeyEvent.VK_S) {
+            direction = buffer;
+        }
+        if (buffer == KeyEvent.VK_PERIOD) {
+            game.player.art.Basic();
+        }
+        if (buffer == KeyEvent.VK_1) {
+            System.out.println("Special 1");
+        }
     }
 
     @Override
@@ -38,28 +58,28 @@ public class KeyHandler implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == timer) {
-            if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
+            if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
                 if (game.player.getX() > 0) {
                     game.player.setLocation(
                             game.player.getX() - 1, 
                             game.player.getY());
                 }
             }
-            if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
+            if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
                 if (game.player.getX() < 500 - game.player.getWidth()) {
                     game.player.setLocation(
                             game.player.getX() + 1, 
                             game.player.getY());
                 }
             }
-            if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
+            if (direction == KeyEvent.VK_UP || direction == KeyEvent.VK_W) {
                 if (game.player.getY() > 0) {
                     game.player.setLocation(
                             game.player.getX(), 
                             game.player.getY() - 1);
                 }
             }
-            if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
+            if (direction == KeyEvent.VK_DOWN || direction == KeyEvent.VK_S) {
                 if (game.player.getY() < 800 - game.player.getHeight()) {
                     game.player.setLocation(
                             game.player.getX(), 
