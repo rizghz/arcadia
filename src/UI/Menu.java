@@ -17,57 +17,61 @@ public class Menu extends JPanel {
 
     private final AssetsLoader loader = new AssetsLoader();
     
-    private JLabel lblTitle;
-    public JButton btnPlay;
-    public JButton btnManual;
-    public JButton btnExit;
+    private final JLabel lblTitle = new JLabel();
+    public JButton btnPlay = new JButton();
+    public JButton btnManual = new JButton();
+    public JButton btnExit = new JButton();
     
     public Menu(int width, int height) {
+        this.setOpaque(false);
         this.setSize(width, height);
         this.setPreferredSize(new Dimension(width, height));
+        this.setBounds(0, 0, width, height);
         this.w = this.getWidth();
         this.h = this.getHeight();
     }
     
     public void Settings() {
-        this.setOpaque(false);
         this.setLayout(null);
         this.setVisible(true);
         this.SetMouseHandler(new MouseHandler());
     }
     
     public void AddTitle() {
-        lblTitle = new JLabel(loader.GameTitle(), JLabel.CENTER);
+        lblTitle.setIcon(loader.GameTitle());
+        lblTitle.setHorizontalAlignment(JLabel.CENTER);
         lblTitle.setBounds(0, 0, this.w, 400);
         this.add(lblTitle);
     }
     
     public void AddButton() {
+        int position = (this.w / 2) - (200 / 2);
         /// Tombol Play
-        btnPlay = new JButton("P L A Y");
-        btnPlay.setBounds(this.w/2 - 150/2, 380, 150, 50);
+        btnPlay.setText("P L A Y");
+        btnPlay.setHorizontalAlignment(JButton.CENTER);
+        btnPlay.setBounds(position, 380, 200, 50);
         SetButtonStyle(btnPlay);
         this.add(btnPlay);
         /// Tombol Manual
-        btnManual = new JButton("M A N U A L");
-        btnManual.setBounds(this.w/2 - 200/2, 430, 200, 50);
+        btnManual.setText("M A N U A L");
+        btnManual.setHorizontalAlignment(JButton.CENTER);
+        btnManual.setBounds(position, 430, 200, 50);
         SetButtonStyle(btnManual);
         this.add(btnManual);
         /// Tombol Exit
-        btnExit = new JButton("E X I T");
-        btnExit.setBounds(this.w/2 - 150/2, 480, 150, 50);
+        btnExit.setText("E X I T");
+        btnExit.setHorizontalAlignment(JButton.CENTER);
+        btnExit.setBounds(position, 480, 200, 50);
         SetButtonStyle(btnExit);
         this.add(btnExit);
     }
     
     public void SetButtonStyle(JButton btn) {
-        btn.setFont(new Font("Arial", Font.BOLD, 20));
-        btn.setBackground(new Color(0, 0, 0, 0));
-        btn.setForeground(Color.decode("#454138"));
-        btn.setOpaque(false);
-        btn.setBorder(null);
-        btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
+        btn.setFocusPainted(false);
+        btn.setBorder(null);
+        btn.setFont(new Font("Arial", Font.BOLD, 20));
+        btn.setForeground(Color.decode("#454138"));
     }
     
     public void FillButton(JButton btn, String text, String color) {
@@ -121,6 +125,7 @@ public class Menu extends JPanel {
                     btnPlay.setVisible(false);
                     btnManual.setVisible(false);
                     btnExit.setVisible(false);
+                    setVisible(false);
                 }
             }
         }, 2, 2);

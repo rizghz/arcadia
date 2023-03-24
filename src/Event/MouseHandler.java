@@ -17,7 +17,7 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == menu.btnPlay) {
             menu.Hide();
-            Screen.game = new Game(screen);
+            Screen.game = new Game(500, 800);
             Screen.game.Settings();
             Screen.game.Play();
             screen.add(Screen.game);

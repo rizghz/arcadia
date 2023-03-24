@@ -25,6 +25,7 @@ public class Screen extends JFrame {
         this.setTitle(title);
         this.setSize(width, height);
         this.setPreferredSize(new Dimension(width, height));
+        this.setBounds(0, 0, width, height);
         this.w = this.getWidth();
         this.h = this.getHeight();
     }
@@ -35,8 +36,7 @@ public class Screen extends JFrame {
         this.setResizable(false);
         this.setLayout(null);
         this.pack();
-        this.setLocationByPlatform(true);
-        this.setLocationRelativeTo(this);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     
@@ -54,7 +54,6 @@ public class Screen extends JFrame {
     
     public void AddMenu() {
         menu = new Menu(this.w, this.h);
-        menu.setBounds(0, 0, this.w, this.h);
         menu.AddTitle();
         menu.AddButton();
         menu.Settings();

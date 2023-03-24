@@ -1,7 +1,6 @@
 package System;
 
 import Event.KeyHandler;
-import UI.Screen;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.LinkedList;
@@ -16,14 +15,17 @@ public class Game extends JPanel {
     public Entity player;
     public LinkedList<Entity> enemy = new LinkedList<>();
 
-    public Game(Screen screen) {
-        this.setSize(screen.getSize());
-        this.setBounds(0, 0, screen.getWidth(), screen.getHeight());
-        this.area = screen.getSize();
+    public Game(int width, int height) {
+        this.setOpaque(false);
+        this.area = new Dimension(width, height);
+        this.setSize(area);
+        this.setPreferredSize(this.area);
+        this.setBounds(0, 0, width, height);
     }
     
     public void Settings() {
-        this.setOpaque(false);
+        this.setBackground(new Color(0, 0, 0, 0));
+        this.setForeground(new Color(0, 0, 0, 0));
         this.setLayout(null);
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -32,60 +34,61 @@ public class Game extends JPanel {
     }
     
     public void AddPlayer() {
-        player = new Entity();
-        player.setBounds(area.width/2 - player.getWidth()/2, 830, 30, 30);
+        int x = (area.width / 2) - (30 / 2);
+        int y = 830;
+        player = new Entity(x, y);
         this.add(player);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 if (player.getY() >= 600) {
                     player.setLocation (
-                            player.getX(), 
-                            player.getY() - 1
+                        player.getX(), 
+                        player.getY() - 1
                     );
-                }
-                if (player.getY() == 600) {
+                } else {
                     this.cancel();
                 }
             }
-        }, 6, 6);
+        }, 5, 5);
     }
     
     public void AddEnemy() {
-        enemy.add(new Entity());
-        enemy.getLast().setBounds (
-                area.width/2 - player.getWidth()/2, 
-                50, 
-                30, 30
-        );
+        /// Enemy 1
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2), 
+            20
+        ));
         this.add(enemy.getLast());
-        enemy.add(new Entity());
-        enemy.getLast().setBounds (
-                area.width/2 - player.getWidth()/2 - 100, 
-                70, 
-                30, 30
-        );
+        /// Enemy 2
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2), 
+            (50 + 60)
+        ));
         this.add(enemy.getLast());
-        enemy.add(new Entity());
-        enemy.getLast().setBounds (
-                area.width/2 - player.getWidth()/2 - 200, 
-                100, 
-                30, 30
-        );
+        /// Enemy 3
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2) - 100, 
+            (70 + 60)
+        ));
         this.add(enemy.getLast());
-        enemy.add(new Entity());
-        enemy.getLast().setBounds (
-                area.width/2 - player.getWidth()/2 + 100, 
-                70, 
-                30, 30
-        );
+        /// Enemy 4
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2) - 200, 
+            (120 + 60)
+        ));
         this.add(enemy.getLast());
-        enemy.add(new Entity());
-        enemy.getLast().setBounds (
-                area.width/2 - player.getWidth()/2 + 200, 
-                100, 
-                30, 30
-        );
+        /// Enemy 5
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2) + 100, 
+            (70 + 60) 
+        ));
+        this.add(enemy.getLast());
+        /// Enemy 6
+        enemy.add ( new Entity (
+            (area.width / 2) - (player.getWidth() / 2) + 200, 
+            (120 + 60)
+        ));
         this.add(enemy.getLast());
     }
     
@@ -101,13 +104,14 @@ public class Game extends JPanel {
                             color.getGreen(), 
                             color.getAlpha() - 1)
                     );
-                } else {
-                    e.setLocation(-30, -30);
-                    remove(e);
-                    this.cancel();
                 }
+//                if (color.getAlpha() == 0) {
+//                    remove(e);
+//                    e.setLocation(-30, -30);
+//                    this.cancel();
+//                }
             }
-        }, 3, 3);
+        }, 1, 1);
     }
     
     public void Play() {
@@ -117,8 +121,12 @@ public class Game extends JPanel {
     
     public void Collision(Entity e, Bullet b) {
         if (e.getBounds().intersects(b.getBounds())) {
-            this.RemoveEntity(e);
-            b.setVisible(false);
+//            int i = player.art.cluster.indexOf(b);
+//            player.art.cluster.clear();
+//            b.SetCoordinate(-100, -100);
+//            this.RemoveEntity(e);
+//            b.setVisible(false);
+//            this.remove(b);
         }
     }
 
