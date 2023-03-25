@@ -50,11 +50,10 @@ public class KeyHandler implements KeyListener, ActionListener {
             game.player.art.Shield();
         }
         if (buffer == KeyEvent.VK_2) {
-//            game.player.Test();
             game.player.Destroy(1);
         }
         if (buffer == KeyEvent.VK_3) {
-            System.out.println("Special 3");
+            game.player.art.Test();
         }
     }
 

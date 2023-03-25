@@ -24,8 +24,6 @@ public class Game extends JPanel {
     }
     
     public void Settings() {
-        this.setBackground(new Color(0, 0, 0, 0));
-        this.setForeground(new Color(0, 0, 0, 0));
         this.setLayout(null);
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -90,28 +88,6 @@ public class Game extends JPanel {
             (120 + 60)
         ));
         this.add(enemy.getLast());
-    }
-    
-    public void RemoveEntity(Entity e) {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Color color = e.getBackground();
-                if (color.getAlpha() != 0) {
-                    e.setBackground(new Color (
-                            color.getRed(), 
-                            color.getBlue(), 
-                            color.getGreen(), 
-                            color.getAlpha() - 1)
-                    );
-                }
-//                if (color.getAlpha() == 0) {
-//                    remove(e);
-//                    e.setLocation(-30, -30);
-//                    this.cancel();
-//                }
-            }
-        }, 1, 1);
     }
     
     public void Play() {

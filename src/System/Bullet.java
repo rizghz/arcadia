@@ -46,8 +46,7 @@ public class Bullet extends JLabel {
                     for (Entity enemy : game.enemy) {
                         if (Collision(enemy)) {
                             Destroy();
-                            enemy.Destroy();
-//                            game.RemoveEntity(enemy);
+                            enemy.Destroy(-1);
                         }
                     }
                     int x = getX();
@@ -55,35 +54,69 @@ public class Bullet extends JLabel {
                     setLocation(x, y - 1);
                 } else {
                     Destroy();
+                    this.cancel();
                 }
             }
         }, 3, 3);
     }
     
-    public void Circle(Bullet bullet) {
+    public void Circle() {
         radius = 100;
-        degree = 0;
+        degree = -90;
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 int x = game.player.getX() + game.player.getWidth()/2 - 10/2;
                 int y = game.player.getY() + game.player.getHeight()/2 - 10/2;
-                if (bullet.InEdge()) {
+                if (InEdge()) {
                     for (Entity enemy : game.enemy) {
-                        game.Collision(enemy, bullet);
+                        if (Collision(enemy)) {
+                            Destroy();
+                            enemy.Destroy(-1);
+                        }
                     }
                     float a = (float) Math.cos(degree * Math.PI / 180.0) * radius;
                     float b = (float) Math.sin(degree * Math.PI / 180.0) * radius;
-                    bullet.setLocation (
+                    setLocation (
                             x + Math.round(a), 
                             y + Math.round(b)
                     );
                 } else {
-                    bullet.setLocation(-100, -100);
-                    game.player.art.cluster.remove(bullet);
+                    Destroy();
                     this.cancel();
                 }
                 degree += 0.5f;
+            }
+        }, 3, 3);
+    }
+    
+    public void Test(int r, int d) {
+        radius = r;
+        degree = d;
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int x = game.player.getX() + game.player.getWidth()/2 - 10/2;
+                int y = game.player.getY() + game.player.getHeight()/2 - 10/2;
+                if (InEdge()) {
+                    for (Entity enemy : game.enemy) {
+                        if (Collision(enemy)) {
+                            Destroy();
+                            enemy.Destroy(-1);
+                        }
+                    }
+                    float a = (float) Math.cos(degree * Math.PI / 180.0) * radius;
+                    float b = (float) Math.sin(degree * Math.PI / 180.0) * radius;
+                    setLocation (
+                            x + Math.round(a), 
+                            y + Math.round(b)
+                    );
+                } else {
+                    Destroy();
+                    this.cancel();
+                }
+//                degree += 0.5f;
+                radius += 1;
             }
         }, 3, 3);
     }
