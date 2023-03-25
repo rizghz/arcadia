@@ -3,6 +3,7 @@ package UI;
 import System.Game;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -15,10 +16,11 @@ public class Screen extends JFrame {
     
     private final AssetsLoader loader = new AssetsLoader();
     
-    public JLabel background;
-    public JLabel vignette;
+    public JLabel background = new JLabel();
+    public JLabel vignette = new JLabel();
     
     public static Menu menu;
+    public static Manual manual;
     public static Game game;
 
     public Screen(int width, int height) throws HeadlessException {
@@ -28,6 +30,9 @@ public class Screen extends JFrame {
         this.setBounds(0, 0, width, height);
         this.w = this.getWidth();
         this.h = this.getHeight();
+        this.menu = new Menu(width, height);
+        this.manual = new Manual(width, height);
+        this.game = new Game(width, height);
     }
     
     public void Settings() {
@@ -40,24 +45,50 @@ public class Screen extends JFrame {
         this.setVisible(true);
     }
     
+    public void Close() {
+        this.dispatchEvent ( new WindowEvent (
+                this, WindowEvent.WINDOW_CLOSING
+        ));
+    }
+    
+    public void Refresh() {
+        this.getContentPane().add(background);
+    }
+    
     public void AddBackground() {
-        background = new JLabel(loader.Background(), JLabel.CENTER);
+        background.setIcon(loader.Background());
+        background.setHorizontalAlignment(JLabel.CENTER);
         background.setBounds(0, 0, this.w, this.h);
         this.getContentPane().add(background);
     }
     
     public void AddVignette() {
-        vignette = new JLabel(loader.Vignette(), JLabel.CENTER);
+        vignette.setIcon(loader.Vignette());
+        vignette.setHorizontalAlignment(JLabel.CENTER);
         vignette.setBounds(0, 0, this.w, this.h);
         this.getContentPane().add(vignette);
     }
     
     public void AddMenu() {
-        menu = new Menu(this.w, this.h);
         menu.AddTitle();
         menu.AddButton();
         menu.Settings();
         this.getContentPane().add(menu);
+        this.Refresh();
+    }
+    
+    public void AddGame() {
+        game.Settings();
+        game.Play();
+        this.getContentPane().add(game);
+        this.Refresh();
+    }
+    
+    public void AddManual() {
+        manual.AddButton();
+        manual.Settings();
+        this.getContentPane().add(manual);
+        this.Refresh();
     }
     
 }

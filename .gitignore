@@ -1,2 +1,3 @@
 src/Ref/*
 build/classes/Ref/*
+/dist/

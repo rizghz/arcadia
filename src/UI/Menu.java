@@ -22,7 +22,10 @@ public class Menu extends JPanel {
     public JButton btnManual = new JButton();
     public JButton btnExit = new JButton();
     
+    public int state;
+    
     public Menu(int width, int height) {
+        this.state = 1;
         this.setOpaque(false);
         this.setSize(width, height);
         this.setPreferredSize(new Dimension(width, height));
@@ -79,7 +82,53 @@ public class Menu extends JPanel {
         btn.setForeground(Color.decode(color));
     }
     
+    public void Show() {
+        setVisible(true);
+        int r = 0x45;
+        int g = 0x41;
+        int b = 0x38;
+        lblTitle.setVisible(true);
+        btnPlay.setForeground(new Color(r, g, b, 0));
+        btnPlay.setVisible(true);
+        btnManual.setForeground(new Color(r, g, b, 0));
+        btnManual.setVisible(true);
+        btnExit.setForeground(new Color(r, g, b, 0));
+        btnExit.setVisible(true);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int x = btnPlay.getForeground().getAlpha();
+                int y = btnManual.getForeground().getAlpha();
+                int z = btnExit.getForeground().getAlpha();
+                if (lblTitle.getY() < 400) {
+                    lblTitle.setLocation (
+                        lblTitle.getX(), 
+                        lblTitle.getY() + 1
+                    );
+                }
+                if ((x | y | z) != 255) {
+                    btnPlay.setForeground ( new Color (
+                        r, g, b, 
+                        x + 1
+                    ));
+                    btnManual.setForeground ( new Color (
+                        r, g, b, 
+                        y + 1
+                    ));
+                    btnExit.setForeground ( new Color (
+                        r, g, b, 
+                        z + 1
+                    ));
+                } else {
+                    state = 1;
+                    this.cancel();
+                }
+            }
+        }, 2, 2);
+    }
+    
     public void Hide() {
+        this.state = 0;
         this.requestFocus(false);
         this.setFocusable(false);
         new Timer().schedule(new TimerTask() {
@@ -90,42 +139,36 @@ public class Menu extends JPanel {
                 Color c = btnExit.getForeground();
                 if (lblTitle.getY() > -400) {
                     lblTitle.setLocation (
-                            lblTitle.getX(), 
-                            lblTitle.getY() - 1
+                        lblTitle.getX(), 
+                        lblTitle.getY() - 1
                     );
-                } else {
-                    lblTitle.setVisible(false);
                 }
                 if ((a.getAlpha() | b.getAlpha() | c.getAlpha()) != 0) {
-                    if (a.getAlpha() != 0) {
-                        btnPlay.setForeground(new Color (
-                                a.getRed(), 
-                                a.getBlue(), 
-                                a.getGreen(), 
-                                a.getAlpha() - 1)
-                        );
-                    }
-                    if (b.getAlpha() != 0) {
-                        btnManual.setForeground(new Color (
-                                b.getRed(), 
-                                b.getBlue(), 
-                                b.getGreen(), 
-                                b.getAlpha() - 1)
-                        );
-                    }
-                    if (c.getAlpha() != 0) {
-                        btnExit.setForeground(new Color (
-                                c.getRed(), 
-                                c.getBlue(), 
-                                c.getGreen(), 
-                                c.getAlpha() - 1)
-                        );
-                    }
+                    btnPlay.setForeground ( new Color (
+                        a.getRed(), 
+                        a.getBlue(), 
+                        a.getGreen(), 
+                        a.getAlpha() - 1
+                    ));
+                    btnManual.setForeground ( new Color (
+                        b.getRed(), 
+                        b.getBlue(), 
+                        b.getGreen(), 
+                        b.getAlpha() - 1
+                    ));
+                    btnExit.setForeground ( new Color (
+                        c.getRed(), 
+                        c.getBlue(), 
+                        c.getGreen(), 
+                        c.getAlpha() - 1
+                    ));
                 } else {
+                    lblTitle.setVisible(false);
                     btnPlay.setVisible(false);
                     btnManual.setVisible(false);
                     btnExit.setVisible(false);
                     setVisible(false);
+                    this.cancel();
                 }
             }
         }, 2, 2);
