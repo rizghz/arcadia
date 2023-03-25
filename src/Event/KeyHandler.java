@@ -1,6 +1,5 @@
 package Event;
 
-import Core.Main;
 import System.Game;
 import UI.Screen;
 import java.awt.event.ActionEvent;
@@ -31,35 +30,38 @@ public class KeyHandler implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         buffer = e.getKeyCode();
-        if (buffer == KeyEvent.VK_LEFT || buffer == KeyEvent.VK_A) {
-            direction = buffer;
+        /// pergerakan player
+        switch (buffer) {
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_A:
+            case KeyEvent.VK_D:
+            case KeyEvent.VK_W:
+            case KeyEvent.VK_S:
+                direction = buffer;
+                break;
         }
-        if (buffer == KeyEvent.VK_RIGHT || buffer == KeyEvent.VK_D) {
-            direction = buffer;
+        /// kemampuan dasar player
+        switch (buffer) {
+            case KeyEvent.VK_PERIOD:
+                game.player.art.Basic(-1);
+                break;
+            case KeyEvent.VK_SLASH:
+                game.player.Dash(direction);
+                break;
         }
-        if (buffer == KeyEvent.VK_UP || buffer == KeyEvent.VK_W) {
-            direction = buffer;
-        }
-        if (buffer == KeyEvent.VK_DOWN || buffer == KeyEvent.VK_S) {
-            direction = buffer;
-        }
-        if (buffer == KeyEvent.VK_PERIOD) {
-            game.player.art.Basic(-1);
-        }
-        if (buffer == KeyEvent.VK_SLASH) {
-            game.player.Dash(direction);
-        }
-        if (buffer == KeyEvent.VK_1) {
-            game.player.art.Shield();
-        }
-        if (buffer == KeyEvent.VK_2) {
-            game.player.Destroy(1);
-        }
-        if (buffer == KeyEvent.VK_3) {
-            game.player.art.Test();
-        }
-        if (buffer == KeyEvent.VK_Q) {
-            game.enemy.get(0).art.Basic(1);
+        /// kemampuan tingkat lanjut player
+        switch (buffer) {
+            case KeyEvent.VK_1:
+                game.player.art.Shield();
+                break;
+            case KeyEvent.VK_2:
+                game.player.art.Spiral();
+                break;
+            case KeyEvent.VK_3:
+                break;
         }
     }
 

@@ -1,7 +1,6 @@
 package System;
 
 import Event.KeyHandler;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.Timer;

@@ -48,7 +48,7 @@ public class Art {
         }, 1, 289);
     }
     
-    public void Test() {
+    public void Spiral() {
         new Timer().schedule(new TimerTask() {
             int n = 1;
             @Override
