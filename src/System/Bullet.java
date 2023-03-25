@@ -10,10 +10,13 @@ public class Bullet extends JLabel {
     
     private final Game game = Screen.game;
     
+    public final Entity owner;
+    
     private float degree;
     private float radius;
     
-    public Bullet(int x, int y) {
+    public Bullet(Entity owner, int x, int y) {
+        this.owner = owner;
         this.setBackground(Color.decode("#cd664d"));
         this.setOpaque(true);
         this.setBounds(x, y, 10, 10);
@@ -34,24 +37,33 @@ public class Bullet extends JLabel {
         game.player.art.cluster.remove(this);
     }
     
-    public boolean Collision(Entity e) {
-        return e.getBounds().intersects(this.getBounds());
+    public boolean isCollision(Entity e) {
+        return (e.getBounds().intersects(this.getBounds()) && 
+               (e.type != owner.type));
     }
     
-    public void Straight() {
+    public void CheckCollision() {
+        for (Entity enemy : game.enemy) {
+            if (isCollision(enemy)) {
+                Destroy();
+                enemy.Destroy(-1);
+            }
+        }
+        if (isCollision(game.player)) {
+            Destroy();
+            game.player.Destroy(1);
+        }
+    }
+    
+    public void Straight(int direction) {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 if (InEdge()) {
-                    for (Entity enemy : game.enemy) {
-                        if (Collision(enemy)) {
-                            Destroy();
-                            enemy.Destroy(-1);
-                        }
-                    }
+                    CheckCollision();
                     int x = getX();
                     int y = getY();
-                    setLocation(x, y - 1);
+                    setLocation(x, y + direction);
                 } else {
                     Destroy();
                     this.cancel();
@@ -66,15 +78,10 @@ public class Bullet extends JLabel {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                int x = game.player.getX() + game.player.getWidth()/2 - 10/2;
-                int y = game.player.getY() + game.player.getHeight()/2 - 10/2;
+                int x = owner.getX() + owner.getWidth()/2 - 10/2;
+                int y = owner.getY() + owner.getHeight()/2 - 10/2;
                 if (InEdge()) {
-                    for (Entity enemy : game.enemy) {
-                        if (Collision(enemy)) {
-                            Destroy();
-                            enemy.Destroy(-1);
-                        }
-                    }
+                    CheckCollision();
                     float a = (float) Math.cos(degree * Math.PI / 180.0) * radius;
                     float b = (float) Math.sin(degree * Math.PI / 180.0) * radius;
                     setLocation (
@@ -96,15 +103,10 @@ public class Bullet extends JLabel {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                int x = game.player.getX() + game.player.getWidth()/2 - 10/2;
-                int y = game.player.getY() + game.player.getHeight()/2 - 10/2;
+                int x = owner.getX() + owner.getWidth()/2 - 10/2;
+                int y = owner.getY() + owner.getHeight()/2 - 10/2;
                 if (InEdge()) {
-                    for (Entity enemy : game.enemy) {
-                        if (Collision(enemy)) {
-                            Destroy();
-                            enemy.Destroy(-1);
-                        }
-                    }
+                    CheckCollision();
                     float a = (float) Math.cos(degree * Math.PI / 180.0) * radius;
                     float b = (float) Math.sin(degree * Math.PI / 180.0) * radius;
                     setLocation (
@@ -115,7 +117,7 @@ public class Bullet extends JLabel {
                     Destroy();
                     this.cancel();
                 }
-//                degree += 0.5f;
+                degree += 0.5f;
                 radius += 1;
             }
         }, 3, 3);

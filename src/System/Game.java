@@ -35,6 +35,7 @@ public class Game extends JPanel {
         int x = (area.width / 2) - (30 / 2);
         int y = 830;
         player = new Entity(x, y);
+        player.type = 1;
         this.add(player);
         new Timer().schedule(new TimerTask() {
             @Override
@@ -57,53 +58,48 @@ public class Game extends JPanel {
             (area.width / 2) - (player.getWidth() / 2), 
             20
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
         /// Enemy 2
         enemy.add ( new Entity (
             (area.width / 2) - (player.getWidth() / 2), 
             (50 + 60)
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
         /// Enemy 3
         enemy.add ( new Entity (
             (area.width / 2) - (player.getWidth() / 2) - 100, 
             (70 + 60)
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
         /// Enemy 4
         enemy.add ( new Entity (
             (area.width / 2) - (player.getWidth() / 2) - 200, 
             (120 + 60)
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
         /// Enemy 5
         enemy.add ( new Entity (
             (area.width / 2) - (player.getWidth() / 2) + 100, 
             (70 + 60) 
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
         /// Enemy 6
         enemy.add ( new Entity (
             (area.width / 2) - (player.getWidth() / 2) + 200, 
             (120 + 60)
         ));
+        enemy.getLast().type = 2;
         this.add(enemy.getLast());
     }
     
     public void Play() {
         this.AddPlayer();
         this.AddEnemy();
-    }
-    
-    public void Collision(Entity e, Bullet b) {
-        if (e.getBounds().intersects(b.getBounds())) {
-//            int i = player.art.cluster.indexOf(b);
-//            player.art.cluster.clear();
-//            b.SetCoordinate(-100, -100);
-//            this.RemoveEntity(e);
-//            b.setVisible(false);
-//            this.remove(b);
-        }
     }
 
 }

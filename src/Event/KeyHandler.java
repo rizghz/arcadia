@@ -44,7 +44,10 @@ public class KeyHandler implements KeyListener, ActionListener {
             direction = buffer;
         }
         if (buffer == KeyEvent.VK_PERIOD) {
-            game.player.art.Basic();
+            game.player.art.Basic(-1);
+        }
+        if (buffer == KeyEvent.VK_SLASH) {
+            game.player.Dash(direction);
         }
         if (buffer == KeyEvent.VK_1) {
             game.player.art.Shield();
@@ -54,6 +57,9 @@ public class KeyHandler implements KeyListener, ActionListener {
         }
         if (buffer == KeyEvent.VK_3) {
             game.player.art.Test();
+        }
+        if (buffer == KeyEvent.VK_Q) {
+            game.enemy.get(0).art.Basic(1);
         }
     }
 
