@@ -17,9 +17,11 @@ public class Manual extends JPanel {
     public JButton btnBack = new JButton();
     
     public int state;
+    public boolean isAdded;
     
     public Manual(int width, int height) {
         this.state = 1;
+        this.isAdded = false;
         this.setOpaque(false);
         this.setSize(width, height);
         this.setPreferredSize(new Dimension(width, height));

@@ -74,6 +74,7 @@ public class Screen extends JFrame {
         menu.AddButton();
         menu.Settings();
         this.getContentPane().add(menu);
+        menu.isAdded = true;
         this.Refresh();
     }
     
@@ -88,6 +89,7 @@ public class Screen extends JFrame {
         manual.AddButton();
         manual.Settings();
         this.getContentPane().add(manual);
+        manual.isAdded = true;
         this.Refresh();
     }
     

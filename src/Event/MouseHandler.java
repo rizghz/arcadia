@@ -25,7 +25,11 @@ public class MouseHandler implements MouseListener {
             }
             if (e.getSource() == menu.btnManual) {
                 menu.Hide();
-                screen.AddManual();
+                if (manual.isAdded == false) {
+                    screen.AddManual();
+                } else {
+                    manual.Show();
+                }
             }
             if (e.getSource() == menu.btnExit) {
                 screen.Close();
