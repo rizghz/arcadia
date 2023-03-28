@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Manual extends JPanel {
@@ -14,7 +15,10 @@ public class Manual extends JPanel {
     private int w;
     private int h;
     
+    private final AssetsLoader loader = new AssetsLoader();
+    
     public JButton btnBack = new JButton();
+    public JLabel[] keymap = new JLabel[9];
     
     public int state;
     public boolean isAdded;
@@ -34,6 +38,54 @@ public class Manual extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
         this.SetMouseHandler(new MouseHandler());
+    }
+    
+    public void AddKeyMap() {
+        keymap[0] = new JLabel();
+        keymap[0].setIcon(loader.KeyW());
+        keymap[0].setHorizontalAlignment(JLabel.CENTER);
+        keymap[0].setBounds(0, 400, 25, 25);
+        this.add(keymap[0]);
+        keymap[1] = new JLabel();
+        keymap[1].setIcon(loader.KeyA());
+        keymap[1].setHorizontalAlignment(JLabel.CENTER);
+        keymap[1].setBounds(25, 400, 25, 25);
+        this.add(keymap[1]);
+        keymap[2] = new JLabel();
+        keymap[2].setIcon(loader.KeyS());
+        keymap[2].setHorizontalAlignment(JLabel.CENTER);
+        keymap[2].setBounds(50, 400, 25, 25);
+        this.add(keymap[2]);
+        keymap[3] = new JLabel();
+        keymap[3].setIcon(loader.KeyD());
+        keymap[3].setHorizontalAlignment(JLabel.CENTER);
+        keymap[3].setBounds(75, 400, 25, 25);
+        this.add(keymap[3]);
+        keymap[4] = new JLabel();
+        keymap[4].setIcon(loader.KeyPeriod());
+        keymap[4].setHorizontalAlignment(JLabel.CENTER);
+        keymap[4].setBounds(100, 400, 25, 25);
+        this.add(keymap[4]);
+        keymap[5] = new JLabel();
+        keymap[5].setIcon(loader.KeySlash());
+        keymap[5].setHorizontalAlignment(JLabel.CENTER);
+        keymap[5].setBounds(125, 400, 25, 25);
+        this.add(keymap[5]);
+        keymap[6] = new JLabel();
+        keymap[6].setIcon(loader.NumKey1());
+        keymap[6].setHorizontalAlignment(JLabel.CENTER);
+        keymap[6].setBounds(150, 400, 25, 25);
+        this.add(keymap[6]);
+        keymap[7] = new JLabel();
+        keymap[7].setIcon(loader.NumKey2());
+        keymap[7].setHorizontalAlignment(JLabel.CENTER);
+        keymap[7].setBounds(175, 400, 25, 25);
+        this.add(keymap[7]);
+        keymap[8] = new JLabel();
+        keymap[8].setIcon(loader.NumKey3());
+        keymap[8].setHorizontalAlignment(JLabel.CENTER);
+        keymap[8].setBounds(200, 400, 25, 25);
+        this.add(keymap[8]);
     }
     
     public void AddButton() {

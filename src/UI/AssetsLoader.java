@@ -36,4 +36,74 @@ public class AssetsLoader {
         return new ImageIcon(image);
     }
     
+    public ImageIcon KeyW() {
+        path = getClass().getResource(BASE_URL + "key-w.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon KeyA() {
+        path = getClass().getResource(BASE_URL + "key-a.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon KeyS() {
+        path = getClass().getResource(BASE_URL + "key-s.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon KeyD() {
+        path = getClass().getResource(BASE_URL + "key-d.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon KeyPeriod() {
+        path = getClass().getResource(BASE_URL + "key-dot.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon KeySlash() {
+        path = getClass().getResource(BASE_URL + "key-slash.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
+    public ImageIcon NumKey1() {
+        path = getClass().getResource(BASE_URL + "key-1.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    public ImageIcon NumKey2() {
+        path = getClass().getResource(BASE_URL + "key-2.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    public ImageIcon NumKey3() {
+        path = getClass().getResource(BASE_URL + "key-3.png");
+        image = new ImageIcon(path)
+                    .getImage()
+                    .getScaledInstance(25, 25, scale);
+        return new ImageIcon(image);
+    }
+    
 }

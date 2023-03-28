@@ -5,7 +5,6 @@ import System.Game;
 import UI.Manual;
 import UI.Menu;
 import UI.Screen;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 

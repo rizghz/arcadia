@@ -86,6 +86,7 @@ public class Screen extends JFrame {
     }
     
     public void AddManual() {
+        manual.AddKeyMap();
         manual.AddButton();
         manual.Settings();
         this.getContentPane().add(manual);
