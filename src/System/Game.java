@@ -51,49 +51,25 @@ public class Game extends JPanel {
         }, 5, 5);
     }
     
+    public static int RNG(int a, int b) {
+        double f = Math.random() / Math.nextDown(1.0);
+        double x = a * (1.0 - f) + b * f;
+        return (int) Math.round(x);
+    }
+    
     public void AddEnemy() {
-        /// Enemy 1
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2), 
-            20
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
-        /// Enemy 2
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2), 
-            (50 + 60)
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
-        /// Enemy 3
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2) - 100, 
-            (70 + 60)
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
-        /// Enemy 4
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2) - 200, 
-            (120 + 60)
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
-        /// Enemy 5
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2) + 100, 
-            (70 + 60) 
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
-        /// Enemy 6
-        enemy.add ( new Entity (
-            (area.width / 2) - (player.getWidth() / 2) + 200, 
-            (120 + 60)
-        ));
-        enemy.getLast().type = 2;
-        this.add(enemy.getLast());
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                enemy.add ( new Entity (
+                    RNG(50, 450), 20
+                ));
+                enemy.getLast().type = 2;
+                enemy.getLast().Move(1);
+                enemy.getLast().Attack();
+                add(enemy.getLast());
+            }
+        }, 1, 1500);
     }
     
     public void Play() {

@@ -38,8 +38,13 @@ public class Bullet extends JLabel {
     }
     
     public boolean isCollision(Entity e) {
-        return (e.getBounds().intersects(this.getBounds()) && 
-               (e.type != owner.type));
+        boolean res = e.getBounds().intersects(this.getBounds()) && 
+                      e.type != owner.type;
+        if (e.getBackground().getAlpha() != 255) {
+            return false;
+        } else {
+            return res;
+        }
     }
     
     public void CheckCollision() {
@@ -72,9 +77,9 @@ public class Bullet extends JLabel {
         }, 3, 3);
     }
     
-    public void Circle() {
-        radius = 100;
-        degree = -90;
+    public void Straight(int r, int d) {
+        radius = r;
+        degree = d;
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -92,12 +97,35 @@ public class Bullet extends JLabel {
                     Destroy();
                     this.cancel();
                 }
-                degree += 0.5f;
+                radius += 1;
             }
         }, 3, 3);
     }
     
-    public void Test(int r, int d) {
+    public void Circle(float r, float d, float e) {
+        radius = r;
+        degree = d;
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int x = owner.getX() + owner.getWidth()/2 - 10/2;
+                int y = owner.getY() + owner.getHeight()/2 - 10/2;
+                CheckCollision();
+                float a = (float) Math.cos(degree * Math.PI / 180.0) * radius;
+                float b = (float) Math.sin(degree * Math.PI / 180.0) * radius;
+                setLocation (
+                        x + Math.round(a), 
+                        y + Math.round(b)
+                );
+                degree += 0.5f;
+                if (radius <= e) {
+                    radius += 1;
+                }
+            }
+        }, 3, 3);
+    }
+    
+    public void Circle(int r, int d) {
         radius = r;
         degree = d;
         new Timer().schedule(new TimerTask() {

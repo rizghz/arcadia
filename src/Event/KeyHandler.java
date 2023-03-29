@@ -58,9 +58,10 @@ public class KeyHandler implements KeyListener, ActionListener {
                 game.player.art.Shield();
                 break;
             case KeyEvent.VK_2:
-                game.player.art.Spiral();
+                game.player.art.Spread();
                 break;
             case KeyEvent.VK_3:
+                game.player.art.Spiral(3);
                 break;
         }
     }

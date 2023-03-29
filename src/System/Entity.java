@@ -12,8 +12,10 @@ public class Entity extends JLabel {
     public final Art art = new Art(this);
     
     public int type;
+    private boolean isDestroyed;
 
     public Entity(int x, int y) {
+        isDestroyed = false;
         this.setBounds(x, y, 30, 30);
         this.setOpaque(true);
         Color color = Color.decode("#454138");
@@ -35,7 +37,34 @@ public class Entity extends JLabel {
         }, 1, 1);
     }
     
+    public void Move(int direction) {
+        new Timer().schedule ( new TimerTask() {
+            @Override
+            public void run() {
+                setLocation(getX(), getY() + direction);
+            }
+        }, 10, 10);
+    }
+    
+    public void Attack() {
+        new Timer().schedule ( new TimerTask() {
+            @Override
+            public void run() {
+                if (!isDestroyed) {
+                    switch (Game.RNG(1, 3)) {
+                        case 1: art.Basic(1); break;
+                        case 2: art.Spread(); break;
+                        case 3: art.Spiral(1); break;
+                    }
+                } else {
+                    this.cancel();
+                }
+            }
+        }, 1, 5000);
+    }
+    
     public void Destroy(int direction) {
+        isDestroyed = true;
         new Timer().schedule ( new TimerTask() {
             @Override
             public void run() {
