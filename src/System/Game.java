@@ -66,7 +66,7 @@ public class Game extends JPanel {
                 ));
                 enemy.getLast().type = 2;
                 enemy.getLast().Move(1);
-                enemy.getLast().Attack();
+//                enemy.getLast().Attack();
                 add(enemy.getLast());
             }
         }, 1, 1500);
@@ -75,6 +75,25 @@ public class Game extends JPanel {
     public void Play() {
         this.AddPlayer();
         this.AddEnemy();
+    }
+    
+    public static boolean isCollision(Entity a, Entity b) {
+        boolean res = a.getBounds().intersects(b.getBounds()) && 
+                      a.type != b.type;
+        if (a.getBackground().getAlpha() != 255 || b.getBackground().getAlpha() != 255) {
+            return false;
+        } else {
+            return res;
+        }
+    }
+    
+    public void CheckCollision() {
+        for (Entity e : enemy) {
+            if (Game.isCollision(player, e)) {
+                player.Destroy(1);
+                e.Destroy(-1);
+            }
+        }
     }
 
 }

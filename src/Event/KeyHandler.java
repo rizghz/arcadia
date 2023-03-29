@@ -79,6 +79,7 @@ public class KeyHandler implements KeyListener, ActionListener {
                     game.player.setLocation(
                             game.player.getX() - 1, 
                             game.player.getY());
+                    game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
@@ -86,6 +87,7 @@ public class KeyHandler implements KeyListener, ActionListener {
                     game.player.setLocation(
                             game.player.getX() + 1, 
                             game.player.getY());
+                    game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_UP || direction == KeyEvent.VK_W) {
@@ -93,6 +95,7 @@ public class KeyHandler implements KeyListener, ActionListener {
                     game.player.setLocation(
                             game.player.getX(), 
                             game.player.getY() - 1);
+                    game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_DOWN || direction == KeyEvent.VK_S) {
@@ -100,6 +103,7 @@ public class KeyHandler implements KeyListener, ActionListener {
                     game.player.setLocation(
                             game.player.getX(), 
                             game.player.getY() + 1);
+                    game.CheckCollision();
                 }
             }
         }
