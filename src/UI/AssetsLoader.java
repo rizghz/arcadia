@@ -40,7 +40,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-w.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -48,7 +48,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-a.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -56,7 +56,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-s.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -64,7 +64,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-d.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -72,7 +72,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-dot.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -80,7 +80,7 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-slash.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
@@ -88,21 +88,21 @@ public class AssetsLoader {
         path = getClass().getResource(BASE_URL + "key-1.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     public ImageIcon NumKey2() {
         path = getClass().getResource(BASE_URL + "key-2.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     public ImageIcon NumKey3() {
         path = getClass().getResource(BASE_URL + "key-3.png");
         image = new ImageIcon(path)
                     .getImage()
-                    .getScaledInstance(25, 25, scale);
+                    .getScaledInstance(30, 30, scale);
         return new ImageIcon(image);
     }
     
