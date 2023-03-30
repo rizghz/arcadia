@@ -80,6 +80,7 @@ public class Screen extends JFrame {
     
     public void AddGame() {
         game.Settings();
+        game.AddScore();
         game.Play();
         this.getContentPane().add(game);
         this.Refresh();

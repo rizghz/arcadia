@@ -1,10 +1,13 @@
 package System;
 
 import Event.KeyHandler;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Game extends JPanel {
@@ -13,6 +16,9 @@ public class Game extends JPanel {
     
     public Entity player;
     public LinkedList<Entity> enemy = new LinkedList<>();
+    
+    public long score = 0;
+    public JLabel lblScore = new JLabel();
 
     public Game(int width, int height) {
         this.setOpaque(false);
@@ -35,15 +41,13 @@ public class Game extends JPanel {
         int y = 830;
         player = new Entity(x, y);
         player.type = 1;
+        player.SetTitle("player");
         this.add(player);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 if (player.getY() >= 600) {
-                    player.setLocation (
-                        player.getX(), 
-                        player.getY() - 1
-                    );
+                    player.Move(0, -1);
                 } else {
                     this.cancel();
                 }
@@ -65,8 +69,9 @@ public class Game extends JPanel {
                     RNG(50, 450), 20
                 ));
                 enemy.getLast().type = 2;
+                enemy.getLast().SetTitle(Entity.GenerateName());
                 enemy.getLast().Move(1);
-//                enemy.getLast().Attack();
+                enemy.getLast().Attack();
                 add(enemy.getLast());
             }
         }, 1, 1500);
@@ -75,6 +80,15 @@ public class Game extends JPanel {
     public void Play() {
         this.AddPlayer();
         this.AddEnemy();
+    }
+    
+    public void AddScore() {
+        lblScore.setText(String.valueOf(score));
+        lblScore.setHorizontalAlignment(JLabel.CENTER);
+        lblScore.setForeground(Color.decode("#454138"));
+        lblScore.setFont(new Font("consolas", Font.BOLD, 40));
+        lblScore.setBounds(500 / 2 - 500 / 2, 50, 500, 40);
+        this.add(lblScore);
     }
     
     public static boolean isCollision(Entity a, Entity b) {

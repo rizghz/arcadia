@@ -76,33 +76,25 @@ public class KeyHandler implements KeyListener, ActionListener {
         if (e.getSource() == timer) {
             if (direction == KeyEvent.VK_LEFT || direction == KeyEvent.VK_A) {
                 if (game.player.getX() > 0) {
-                    game.player.setLocation(
-                            game.player.getX() - 1, 
-                            game.player.getY());
+                    game.player.Move(-1, 0);
                     game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_RIGHT || direction == KeyEvent.VK_D) {
                 if (game.player.getX() < 500 - game.player.getWidth()) {
-                    game.player.setLocation(
-                            game.player.getX() + 1, 
-                            game.player.getY());
+                    game.player.Move(1, 0);
                     game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_UP || direction == KeyEvent.VK_W) {
                 if (game.player.getY() > 0) {
-                    game.player.setLocation(
-                            game.player.getX(), 
-                            game.player.getY() - 1);
+                    game.player.Move(0, -1);
                     game.CheckCollision();
                 }
             }
             if (direction == KeyEvent.VK_DOWN || direction == KeyEvent.VK_S) {
                 if (game.player.getY() < 800 - game.player.getHeight()) {
-                    game.player.setLocation(
-                            game.player.getX(), 
-                            game.player.getY() + 1);
+                    game.player.Move(0, 1);
                     game.CheckCollision();
                 }
             }
